@@ -12,7 +12,7 @@ github_repo: "https://github.com/luohaipeng/luohaipeng.github.com.git" # you cod
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "把每一天都当作是第一天和最后一天"
-sidebar-avatar: /img/about-BY-gentle.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/luohaipengheadpic.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
