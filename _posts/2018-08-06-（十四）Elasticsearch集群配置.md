@@ -173,7 +173,7 @@ green，表示主分片和副本分片都已分配，一切正常。
 **使用head插件管理ES集群**  
 &emsp;&emsp;我们在之前安装了es-head插件的时候提到，es-head插件可以管理我们elasticsearch集群的，那现在我们就使用之前安装好的es-head插件，来图形化界面的方式管理elasticsearch集群。  
 打开首页我们可以看到以下界面：  
-![image.png](https://upload-images.jianshu.io/upload_images/10574922-6df273dae3d9d0f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
+![image.png](https://upload-images.jianshu.io/upload_images/10574922-6df273dae3d9d0f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 &emsp;&emsp;连接任意一个节点看到的结果都是一样的，这个就验证了我们上面提到的概念：用户的请求可以发往集群中任何一个节点，由该节点负责请求分发和返回结果。 
 - 在该界面中，是以表格的形式展示数据的，纵向的是集群中的索引，横向的是集群中的节点。  
 - 横向有4行，分别是4个我们自己命名的节点，其中标记了es1是星号，代表它为主节点。  
@@ -195,7 +195,7 @@ PUT /store/employee/3
 }
 ```
 看到以下返回结果提示添加成功：  
-![image.png](https://upload-images.jianshu.io/upload_images/10574922-df29c2323e205ff4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
+![image.png](https://upload-images.jianshu.io/upload_images/10574922-df29c2323e205ff4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 &emsp;&emsp;但这里有一个问题，就是该文档会被存储到哪一个主分片中呢？首先这肯定不会是随机的，否则将来要获取文档的时候我们就不知道从何处寻找了。实际上，这个过程是根据下面这个公式决定的：
 ```
 shard = hash(routing) % number_of_primary_shards
@@ -205,12 +205,12 @@ shard = hash(routing) % number_of_primary_shards
 这就顺便解释了为什么我们要在创建索引的时候就确定好主分片的数量，并且永远不会改变这个数量，因为如果数量变化了，那么所有之前路由的值都会无效，文档也再也找不到了。  
 
 那接下来我们看看每个节点是否可以查询到该数据:  
-![image.png](https://upload-images.jianshu.io/upload_images/10574922-6380194159404cca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
+![image.png](https://upload-images.jianshu.io/upload_images/10574922-6380194159404cca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![image.png](https://upload-images.jianshu.io/upload_images/10574922-76aa659f8a185997.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
+![image.png](https://upload-images.jianshu.io/upload_images/10574922-76aa659f8a185997.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![image.png](https://upload-images.jianshu.io/upload_images/10574922-f3700e81e035ecdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
-![image.png](https://upload-images.jianshu.io/upload_images/10574922-3e4e24bdd6d9a885.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
+![image.png](https://upload-images.jianshu.io/upload_images/10574922-f3700e81e035ecdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image.png](https://upload-images.jianshu.io/upload_images/10574922-3e4e24bdd6d9a885.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 &emsp;&emsp;这4个节点都是可以查询到刚刚我们新增的文档id为3的数据，集群正常运作。在我们整个集群配置的过程中，需要我们配置的东西很少，所以elasticsearch真的可以很轻松的完成一个规模超大的集群，并且在该集群中存储海量的数据。
 
 
