@@ -4,8 +4,7 @@ title: "About"
 description: "Hey, this is me."
 header-img: "img/post-bg-rwd.jpg"
 ---
-**Hello**，我是luohaipeng，一只Java程序猿，目前在广州工作。  
+**Hello**，我叫luohaipeng，一只Java程序猿，除此之外，我还是撸猫小能手。  
   
-*工作之余，会学学技术，写写博客，约上3、5好友打打羽毛球，但做的最多的一件事是撸猫...*  
-*下面这只就是我的猫☟*  
+*所以比起我，还是介绍下我的猫吧，下面这只就是我的猫☟*  
 ![](img/cat.jpg)
