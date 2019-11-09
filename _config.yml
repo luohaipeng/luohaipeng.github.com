@@ -1,10 +1,10 @@
 # Site settings
 title: Blog
-SEOTitle: 罗海鹏-博客
+SEOTitle: luohaipeng-博客
 header-img: img/post-bg-desk.jpg
 email: 164132877@qq.com
 description: "把每一天都当作是第一天和最后一天"
-keyword: "罗海鹏-博客, luohaipeng-blog, luohaipeng, 罗海鹏, iOS, Apple, iPhone"
+keyword: "luohaipeng-博客, luohaipeng-blog, luohaipeng, luohaipeng, iOS, Apple, iPhone"
 url: "http://luohaipeng.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/luohaipeng/luohaipeng.github.com.git" # you code repository
