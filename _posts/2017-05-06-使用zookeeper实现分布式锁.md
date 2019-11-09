@@ -5,7 +5,7 @@ author:     luohaipeng
 header-img: img/post-bg-ios9-web.jpg
 catalog: true
 tags:
-    - 其他
+    - 杂谈
 ---
 #### 应用场景
 分布式锁主要用于在分布式环境中保护跨进程、跨主机、跨网络的共享资源实现互斥访问，以达到保证数据的一致性。
