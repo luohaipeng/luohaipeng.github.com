@@ -13,11 +13,11 @@ tags:
 &emsp;&emsp;官方推荐使用Java High Level REST Client，因为在实际使用中，Java Transport Client在大并发的情况下会出现连接不稳定的情况。  
 &emsp;&emsp;那接下来我们就来看看elasticsearch提供的Java High Level REST Client（以下简称高级REST客户端）的一些基础的操作，跟多的操作大家自行阅读elasticsearch的官方文档：`https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high.html`在官网上已经对高级REST客户端的各种API做了很详细的使用说明，我们这篇文章主要还是翻译官网上的内容，先让大家以更友好的中文文档方式入门，等大家熟悉了这些API之后在查阅官网。  
 ## 测试项目
-&emsp;&emsp;在这里我也做了一个高级REST客户端的使用测试，该测试项目使用springboot开发，并且使用反射和泛型做了简易的封装，加强通用性。该项目的GitHub地址在以下链接：
-> https://github.com/luohaipeng/es-java-api
+&emsp;&emsp;在这里我也做了一个高级REST客户端的使用测试，该测试项目使用springboot开发，并且使用反射和泛型做了简易的封装，加强通用性。该项目的GitHub地址在以下链接：  
+> https://github.com/luohaipeng/es-java-api  
 ## 高级REST客户端使用
 ### 导入依赖
-我们这里以maven为例，使用高级REST客户端需要两个依赖，分别是：
+我们这里以maven为例，使用高级REST客户端需要两个依赖，分别是：  
 ```
       <dependency>
             <groupId>org.elasticsearch</groupId>
@@ -30,10 +30,10 @@ tags:
             <artifactId>elasticsearch-rest-high-level-client</artifactId>
             <version>6.2.4</version>
         </dependency>
-```
+```  
 这两个依赖的版本是跟elasticsearch服务版本同步更新的，所以选择的依赖版本无需按照我这里的版本，而是以自己的elasticsearch服务的版本为主。
 ### 初始化
-首先，我们想要操作elasticsearch，那必须先创建出连接的客户端对象，创建客户端对象的API如下：
+首先，我们想要操作elasticsearch，那必须先创建出连接的客户端对象，创建客户端对象的API如下：  
 ```
         String[] ips = {"192.168.85.133:9200","192.168.85.133:9400"}
         HttpHost[] httpHosts = new HttpHost[ips.length];
@@ -49,7 +49,7 @@ tags:
 - 构造方法：`IndexRequest(String index, String type, String id)`第一个参数是该文档插入到哪个索引中，第二个参数是该文档插入到哪个文档类型中，第三个参数是指定文档的id。
 - 设置文档内容方法：`source()`该方法有多个重载方法，我们可以把文档内容以json字符串的方式传递，也可以以xml方式传递，还可以用Map方式传递。  
 - 更新文档操作：调用高级REST客户端的index方法，并传入IndexRequest对象。
-具体代码如下：
+具体代码如下：  
 ```
 public void insertOrUpdate(Object o) throws Exception {
         Map map = BeanUtil.bean2Map(o);
@@ -62,7 +62,7 @@ public void insertOrUpdate(Object o) throws Exception {
 删除文档操作需要创建DeleteRequest对象。
 - 构造方法：常用的构造方法：`DeleteRequest(String index, String type, String id)`第一个参数代表将要删除的该文档所在的索引，第二个参数代表将要删除的索引所在的文档类型，第三个参数代表要删除的文档对应的id
 - 删除文档：调用高级REST客户端的delete方法，并传入DeleteRequest对象。  
-具体代码如下：
+具体代码如下：  
 ```
 public void delete(Long id) throws Exception {
         DeleteRequest request = new DeleteRequest(baseIndex, baseType, id + "");
@@ -74,7 +74,7 @@ public void delete(Long id) throws Exception {
 - 构造方法：常用构造方法：`GetRequest(String index, String type, String id)`第一个参数代表要获取的文档所在的索引，第二个参数代表要获取的索引所在的文档类型，第三个参数代表要获取的文档对应的id
 - 获取文档：调用高级REST客户端的get方法，并传入GetRequest对象。  
 - 返回结果：返回GetResponse对象，可以使用该对象的getSource()方法，获得文档数据，该数据封装成Map对象。  
-具体代码如下：
+具体代码如下：  
 ```
 public T get(Long id) throws Exception {
         GetRequest request = new GetRequest(baseIndex, baseType, id+"");
@@ -92,7 +92,7 @@ public T get(Long id) throws Exception {
 - 设置搜索关键字高亮：当我们输入关键字搜索，如果能搜索出相应的文档，那一般我们都会在该文档上，把匹配到的关键字高亮显示，设置高亮显示的对象为HighlightBuilder，该对象有两个方法，preTags()高亮前缀，postTags()高亮后缀，通过这两个前缀和后缀，把搜索匹配到的文档中，出现的搜索关键字的地方包裹起来，实现高亮的效果。创建出来的HighlightBuilder设置到SearchSourceBuilder中。然后SearchSourceBuilder又设置到SearchRequest对象中。
 - 搜索：调用高级REST客户端的search方法，并传入SearchRequest对象。
 - 返回结果：返回SearchResponse对象，调用该对象的getHits()方法，获取返回结果，并最终转为我们自己的业务Page对象。  
-具体代码如下：
+具体代码如下：  
 ```
 public PageResult search(QueryObject qo) throws Exception {
         SearchRequest request = new SearchRequest();
