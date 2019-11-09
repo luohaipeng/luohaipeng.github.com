@@ -41,7 +41,7 @@ Kibana的配置文件在kibana/config目录中，文件名为kibana.yml。我们
 属性名为：`elasticsearch.username`和`elasticsearch.password`，默认是没有用户名和密码，如果elasticsearch是配置了用户名和密码的，那就需要配置这两行属性  
 **5、访问Kibana服务**  
 相关的配置修改好了后，就可以使用浏览器访问kibana了，看到如下界面：  
-![Kibana界面](https://upload-images.jianshu.io/upload_images/10574922-bf3adcdab5a0e316.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
+![Kibana界面](https://upload-images.jianshu.io/upload_images/10574922-bf3adcdab5a0e316.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ## 导入测试数据
 由于当前我们的Elasticsearch数据量比较少，没办法充分发挥Kibana的作用，很多高级的数据分析和图形化界面都没法展示出来，所以我们需要导入一些测试数据到Elasticsearch中。  
 **数据说明**  
